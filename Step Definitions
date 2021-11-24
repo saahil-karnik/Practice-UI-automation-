@@ -1,0 +1,180 @@
+package login1;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import PageFactory.loginPF;
+import io.cucumber.java.PendingException;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+  
+
+public class LoginSD {
+	WebDriver driver = null;
+	loginPF pf;
+
+
+	@Given("^user is on login page$")
+	public void user_is_on_login_page() throws Throwable {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\SAKARNIK\\eclipse-workspace\\Sprinttwo\\src\\test\\resources\\drivers\\chromedriver.exe");
+	    driver = new ChromeDriver();
+	    driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	    driver.manage().window().maximize();
+	    driver.navigate().to("https://accounts.magicbricks.com/userauth/login");
+	}
+
+	@Given("^user enters valid test@(\\d+)$")
+	public void user_enters_valid_test(int arg1) throws Throwable {
+		pf = new loginPF(driver);
+	    pf.enterEmail("saahilgsu@gmail.com");
+	    //driver.findElement(By.xpath("//*[@id=\"firstLoginDiv\"]")).sendKeys("saahilgsu@gmail.com");
+	}
+
+	@Given("^user presses next button$")
+	public void user_presses_next_button() throws Throwable {
+	   pf = new loginPF(driver);
+	   pf.clickNext();
+	}
+
+	@Given("^user enters valid pass(\\d+)$")
+	public void user_enters_valid_pass(int arg1) throws Throwable {
+		pf = new loginPF(driver);
+		pf.enterPassword("haraami@123");
+	}
+
+	@Given("^user presses login button$")
+	public void user_presses_login_button() throws Throwable {
+		pf = new loginPF(driver);
+		pf.clickLogin();
+	}
+
+	@Then("^user can login to magicbricks account$")
+	public void user_can_login_to_magicbricks_account() throws Throwable {
+	    
+	}
+
+	@Given("^user enters invalid test@(\\d+)$")
+	public void user_enters_invalid_test(int arg1) throws Throwable {
+		pf = new loginPF(driver);
+	    pf.enterEmail("saahilgsu@yahoo.com");
+	}
+
+	@Given("^user enters invalid pass(\\d+)$")
+	public void user_enters_invalid_pass(int arg1) throws Throwable {
+		pf = new loginPF(driver);
+		pf.enterPassword("123!");
+	}
+
+	@Then("^user gets a message to use proper credentials$")
+	public void user_gets_a_message_to_use_proper_credentials() throws Throwable {
+	   
+	}
+
+
+	}
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+package signup1;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import PageFactory.loginPF;
+import PageFactory.signupPF;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+
+public class SignupSD {
+	WebDriver driver = null;
+	signupPF sf;
+	
+	
+	@Given("user is in signup window")
+	public void user_is_in_signup_window() {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\SAKARNIK\\eclipse-workspace\\Sprinttwo\\src\\test\\resources\\drivers\\chromedriver.exe");
+		ChromeDriverManager.getInstance().setup();
+		driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+	    driver.manage().window().maximize();
+	    driver.navigate().to("https://www.magicbricks.com/bricks/User-Registration1");
+	}
+
+	@When("user clicks on buyer")
+	public void user_clicks_on_buyer() {
+	   sf = new signupPF(driver);
+	    sf.clickOption();
+		//driver.findElement(By.xpath("//*[@id='ubiusertype1']")).click();
+	}
+
+	@And("user enters Saahil")
+	public void user_enters_saahil() throws InterruptedException {
+		sf = new signupPF(driver);
+	    sf.enterName("Saahil");
+		//driver.findElement(By.xpath("//*[@id='ubifname']")).sendKeys("Saahil");
+	}
+
+	@And("user enters test@{int}")
+	public void user_enters_test(Integer int1) throws InterruptedException {
+	    sf = new signupPF(driver);
+	    sf.enterEmail("saahilgsu@gmail.com");
+		//driver.findElement(By.xpath("//*[@id='ubiemail']")).sendKeys("saahilgsu@gmail.com");
+	}
+
+	@And("user enters pass1")
+	public void user_enters_pass1() throws InterruptedException {
+		sf = new signupPF(driver);
+	    sf.enterPassword("password123");
+		//driver.findElement(By.xpath("//*[@id='ubipass']")).sendKeys("password123");
+	}
+
+	@And("user selects {double}")
+	public void user_selects(Double double1) throws InterruptedException {
+		sf = new signupPF(driver);
+		sf.selectISD();
+		//driver.findElement(By.xpath("//*[@id='isdCodeText']")).click();
+	}
+
+	@And("user enters on {int}")
+	public void user_enters_on(Integer int1) throws InterruptedException {
+		sf = new signupPF(driver);
+		sf.enterMobile("8591456250");
+		//driver.findElement(By.xpath("//*[@id='ubimobile1']")).sendKeys("8591456250");
+	}
+
+	@And("user clicks on T&C confirmation")
+	public void user_clicks_on_t_c_confirmation() throws InterruptedException {
+		sf = new signupPF(driver);
+		sf.clickTC();
+		//driver.findElement(By.xpath("//*[@name='termsAndConditions']")).click();
+	}
+
+	@And("user clicks on signup button")
+	public void user_clicks_on_signup_button() throws InterruptedException {
+		sf = new signupPF(driver);
+		sf.clickLogin();
+		//driver.findElement(By.linkText("Sign Up"));
+	}
+
+	@Then("user gets signed up")
+	public void user_gets_signed_up() throws InterruptedException {
+		sf = new signupPF(driver);
+	}
+}
