@@ -1,0 +1,126 @@
+package PageFactory;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class loginPF {
+	
+	WebDriver driver;
+	
+	@FindBy(name = "emailOrMobile")
+    WebElement emailID;
+	
+	@FindBy(id = "btnStep1")
+	WebElement nextButton;
+	
+	@FindBy(id = "password")
+	WebElement password;
+	
+	@FindBy(id = "btnLogin")
+	WebElement loginButton;
+	
+	public loginPF(WebDriver driver){
+
+        this.driver = driver;
+
+
+        PageFactory.initElements(driver, this);
+
+    }
+
+	public void enterEmail(String email) {
+		emailID.sendKeys(email);
+	}
+	
+	public void clickNext() {
+		nextButton.click();
+	}
+	public void enterPassword(String pass) {
+		password.sendKeys(pass);
+	}
+	public void clickLogin() {
+		loginButton.click();
+	}
+}
+
+--------------------------------------------------------------
+
+package PageFactory;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class signupPF {
+	
+	WebDriver driver;
+	
+	@FindBy(xpath= "//body[1]/div[1]/div[2]/div[2]/div[2]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/ul[1]/li[1]/span[1]")
+    WebElement buyerButton;
+	
+	@FindBy(xpath = "//*[@id='ubifname']")
+	WebElement nameField;
+	
+	@FindBy(xpath = "//*[@id='ubiemail']")
+	WebElement emailField;
+	
+	@FindBy(xpath = "//*[@id='ubipass']")
+	WebElement passwordField;
+	
+	@FindBy(xpath = "//*[@id='isdCodeText']")
+	WebElement countryCode;
+	
+	@FindBy(xpath = "//*[@id='ubimobile1']")
+	WebElement mobileField;
+	
+	@FindBy(xpath = "//*[@name='termsAndConditions']")
+	WebElement TCcheckbox;
+	
+	@FindBy(xpath = "//body[1]/div[1]/div[2]/div[2]/div[2]/form[1]/div[1]/div[1]/div[11]/button[1]")
+	WebElement loginButton;
+	
+	public signupPF(WebDriver driver){
+
+        this.driver = driver;
+
+
+        PageFactory.initElements(driver, this);
+
+    }
+
+	public void clickOption() {
+		buyerButton.click();
+	}
+	
+	public void enterName(String name) {
+		nameField.sendKeys(name);
+	}
+	
+	public void enterEmail(String email) {
+		emailField.sendKeys(email);
+	}
+	
+	public void enterPassword(String password) {
+		passwordField.sendKeys(password);
+	}
+	
+	public void selectISD() {
+        countryCode.click();
+	}
+	
+	public void enterMobile (String mobile) {
+		mobileField.sendKeys(mobile);
+	}
+	
+	public void clickTC() {
+		TCcheckbox.click();
+	}
+	
+	public void clickLogin() {
+		loginButton.click();
+	}
+}
+
