@@ -1,0 +1,46 @@
+Feature: Checking login functionality
+
+Scenario Outline: Login as an authenticated user
+Given user is on login page
+And user enters valid <email address>
+And user presses next button
+And user enters valid <password>
+And user presses login button
+Then user can login to magicbricks account
+
+Examples: 
+ | email address | password |
+ | test@123    | pass1   |
+
+Scenario Outline: Login as an unauthenticated user
+Given user is on login page 
+And user enters invalid <email address>
+And user presses next button
+And user enters invalid <password>
+And user presses login button
+Then user gets a message to use proper credentials
+
+Examples:
+ | email address | password |
+ | test@321      | pass2    |
+
+-------------------------------------------------------
+
+Feature: Signup feature
+
+Scenario Outline: Sign in as an unauthenticated user
+Given user is in signup window
+#When user clicks on buyer
+And user enters <name>
+And user enters <email>
+And user enters <password>
+And user selects <country code>
+And user enters on <mobile>
+And user clicks on T&C confirmation
+And user clicks on signup button
+Then user gets signed up 
+
+Examples: 
+ | name | email | password | country code | mobile |
+ | Saahil | test@123 | pass1 | +91 | 1234567890 |
+
