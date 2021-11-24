@@ -1,0 +1,41 @@
+package login1;
+
+import static org.junit.Assert.assertTrue;
+
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+
+@RunWith(Cucumber.class)
+
+@CucumberOptions(features="src/test/resources/Login/login.feature", glue= {"login1"})
+public class TestRunner extends AbstractTestNGCucumberTests{
+
+
+}
+
+----------------------------------------------------------------------------------------------
+
+package signup1;
+
+import static org.junit.Assert.assertTrue;
+
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+
+@RunWith(Cucumber.class)
+
+@CucumberOptions(features="src/test/resources/Signup/signup.feature", glue= {"signup1"})
+public class TestRunner extends AbstractTestNGCucumberTests{
+
+
+}
